@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use Illuminate\Http\Request;
+
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::prefix("categories")->group(function () {
-    Route::get("/", [CategoryController::class, "getAll"]);
+    Route::get("/", [CategoryController::class, "getAll"])->name("categories.getAll");
+});
+
+Route::prefix("user")->group(function () {
+    Route::post("signup", [UserController::class, "signUp"])->name("user.signup");
+    Route::post("login", [UserController::class, "signIn"])->name("user.login");
 });

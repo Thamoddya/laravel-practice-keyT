@@ -1,0 +1,23 @@
+@url=http://127.0.0.1:8000/api/
+GET {{url}}categories
+
+###
+POST {{url}}user/signup
+Content-Type: application/json
+
+{
+    "email": "kayt@gmail.com",
+    "password": "12345",
+    "password_confirmation": "12345",
+    "mobile": "0987654321",
+    "name": "kayt",
+    "categories_id": "1"
+}
+###
+POST {{url}}user/login
+Content-Type: application/json
+
+{
+    "email": "kayt@gmail.com",
+    "password": "12345"
+}

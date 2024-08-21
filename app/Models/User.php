@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -33,6 +34,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public static function findByEmail(string $email): User|null
+    {
+        return User::where('email', $email)->first();
+    }
 
     /**
      * The attributes that should be cast.
