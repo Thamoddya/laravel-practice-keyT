@@ -44,7 +44,10 @@ class UserController extends Controller
             $data["password"] = Hash::make($data["password"]);
             $user = new User($data);
             $user->save();
-            return response()->json($user, ResponseAlias::HTTP_CREATED);
+            return response()->json([
+                "status" => "success",
+                "data" => $user
+            ], ResponseAlias::HTTP_CREATED);
         } else return response()->json([
             "status" => "error",
             "data" => "i dont know how it dont here"
